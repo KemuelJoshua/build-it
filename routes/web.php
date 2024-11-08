@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ForecastController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +20,7 @@ Route::get('/', [HomeController::class, 'index'])
 
 Route::get('estimate', [HomeController::class, 'estimate'])
     ->name('estimate');
+    
+Route::get('/forecast', [ForecastController::class, 'predict']);
 
 Auth::routes();
