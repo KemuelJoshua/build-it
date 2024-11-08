@@ -266,192 +266,204 @@ function estimateCost() {
 
     // Display the breakdown (improved formatting and clarity)
     resultElement.html(`
-        <table style="border: solid 4px black; text-align: center; width:100% important;">
+        <div class="container">
             <h2>Here is the overall cost breakdown and estimation</h2>
-            <table border="1">
-                <tr>
-                    <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;Prepared square meter</td>
-                    <td colspan="3" align="left">&nbsp;&nbsp;&nbsp;&nbsp;${squareMeter} sq m.</td>
-                </tr>
-                <tr>
-                    <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;Your budget</td>
-                    <td colspan="3" align="left">&nbsp;&nbsp;&nbsp;&nbsp;₱ ${formatNumberWithCommas(budget)}</td>
-                </tr>
-                <tr>
-                    <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;Budget range for ${squareMeter} square meters</td>
-                    <td colspan="3" align="left">&nbsp;&nbsp;&nbsp;&nbsp;₱ ${formatNumberWithCommas(minBudget)} - ₱ ${formatNumberWithCommas(maxBudget)}</td>
-                </tr>
-                <tr>
-                    <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;Estimated working days</td>
-                    <td>${workingDays} days (approximately ${estimatedMonths} months based on an average month of ${averageMonthLength} days)</td>
-                </tr>
-            </table>
-            <br><br>
-            <table border="1">
-                <tr>
-                    <td colspan="3" align="center"><strong>Budget Breakdown</strong></td>
-                </tr>
-                <tr>
-                    <th>Breakdown</th>
-                    <th>Percentage</th>
-                    <th>Amount</th>
-                </tr>
-                <tr>
-                    <td align="center">Labor</td>
-                    <td align="center">45%</td>
-                    <td align="center">₱ ${formatNumberWithCommas(laborBudget.toFixed(2))}</td>
-                </tr>
-                <tr>
-                    <td align="center">Materials</td>
-                    <td align="center">45%</td>
-                    <td align="center">₱ ${formatNumberWithCommas(materialsBudget.toFixed(2))}</td>
-                </tr>
-                <tr>
-                    <td align="center">Contingency</td>
-                    <td align="center">7%</td>
-                    <td align="center">₱ ${formatNumberWithCommas(contingencyBudget.toFixed(2))}</td>
-                </tr>
-                <tr>
-                    <td align="center">Equipment</td>
-                    <td align="center">3%</td>
-                    <td align="center">₱ ${formatNumberWithCommas(equipmentBudget.toFixed(2))}</td>
-                </tr>
-            </table>
-            <br><br>
-            <table border="1">
-                <tr>
-                    <td colspan="4" align="center"><strong>Labor(45%)</strong></td>
-                </tr>
-                <tr>
-                    <th align="center">Workers</th>
-                    <th align="center">No. of workers</th>
-                    <th align="center">Salary per day</th>
-                    <th align="center">Total Cost</th>
-                </tr>
-                <tr>
-                    <td align="center">Foreman</td>
-                    <td align="center">${workers.foreman}</td>
-                    <td align="center">₱ ${wageRates.foreman}</td>
-                    <td align="center">₱ ${formatNumberWithCommas((workers.foreman * wageRates.foreman).toFixed(2))}</td>
-                </tr>
-                <tr>
-                    <td align="center">Carpenter</td>
-                    <td align="center">${workers.carpenter}</td>
-                    <td align="center">₱ ${wageRates.carpenter}</td>
-                    <td align="center">₱ ${formatNumberWithCommas((workers.carpenter * wageRates.carpenter).toFixed(2))}</td>
-                </tr>
-                <tr>
-                    <td align="center">Mason</td>
-                    <td align="center">${workers.mason}</td>
-                    <td align="center">₱ ${wageRates.mason}</td>
-                    <td align="center">₱ ${formatNumberWithCommas((workers.mason * wageRates.mason).toFixed(2))}</td>
-                </tr>
-                <tr>
-                    <td align="center">Welder</td>
-                    <td align="center">${workers.welder}</td>
-                    <td align="center">₱ ${wageRates.welder}</td>
-                    <td align="center">₱ ${formatNumberWithCommas((workers.welder * wageRates.welder).toFixed(2))}</td>
-                </tr>
-                <tr>
-                    <td align="center">Painter</td>
-                    <td align="center">${workers.painter}</td>
-                    <td align="center">₱ ${wageRates.painter}</td>
-                    <td align="center">₱ ${formatNumberWithCommas((workers.painter * wageRates.painter).toFixed(2))}</td>
-                </tr>
-                <tr>
-                    <td align="center">Electrician</td>
-                    <td align="center">${workers.electrician}</td>
-                    <td align="center">₱ ${wageRates.electrician}</td>
-                    <td align="center">₱ ${formatNumberWithCommas((workers.electrician * wageRates.electrician).toFixed(2))}</td>
-                </tr>
-                <tr>
-                    <td align="center">Helper</td>
-                    <td align="center">${workers.helper}</td>
-                    <td align="center">₱ ${wageRates.helper}</td>
-                    <td align="center">₱ ${formatNumberWithCommas((workers.helper * wageRates.helper).toFixed(2))}</td>
-                </tr>
-                 <tr>
-                        <td colspan="3" align="right"><strong>Total Daily Labor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
-                        <td align="center">₱ ${formatNumberWithCommas(dailyLaborCost.toFixed(2))}</td>
+    
+            <!-- First Table: Cost Breakdown -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <td align="left">Prepared square meter</td>
+                        <td colspan="3" align="left">${squareMeter} sq m.</td>
                     </tr>
                     <tr>
-                        <td colspan="3" align="right"><strong>Total Labor Cost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
-                        <td align="center">₱ ${formatNumberWithCommas(laborBudget.toFixed(2))}</td>
+                        <td align="left">Your budget</td>
+                        <td colspan="3" align="left">₱ ${formatNumberWithCommas(budget)}</td>
                     </tr>
-            </table>
-
-                    <table border="1">
-            <tr>
-                <td align="center"><strong>Materials (45%)</td></strong>
-            </tr>
-            <tr>
-                <td align="center">Materials</td>
-            </tr>
-            <tr>
-                <td align="center">Cement</td>
-            </tr>
-            <tr>
-                <td align="center">Rebars</td>
-            </tr>
-            <tr>
-                <td align="center">Hollow blocks</td>
-            </tr>
-            <tr>
-                <td align="center">Tiles and Adhesive</td>
-            </tr>
-            <tr>
-                <td align="center">Roping Materials Including C-Purlins</td>
-            </tr>
-            <tr>
-                <td align="center">Angle bars for traces</td>
-            </tr>
-            <tr>
-                <td align="center">Painting materials</td>
-            </tr>
-            <tr>
-                <td align="center">Electrical Materials</td>
-            </tr>
-            <tr>
-                <td align="center">Plywood & Lambers (nails, doorjambs, etc.)</td>
-            </tr>
-            <tr>
-                <td align="center">Panel doors</td>
-            </tr>
-            <tr>
-                <td align="center"><strong>Total Material Cost: ₱ ${formatNumberWithCommas(materialsBudget.toFixed(2))}</strong></td>
-            </tr>
-        </table>
-
-        <br><br>
-        <table border="1">
-            <tr>
-                <td colspan="2" align="center"><Strong>Contingency (7%)</td></Strong>
-            </tr>
-            <tr>
-                <td align="center">Note: It is strongly recommended that a contingency fund of 7% of the total project budget be allocated for the construction of your new home. This reserve will serve as a financial safety net to mitigate the potential impact of unforeseen circumstances, such as fluctuations in material costs or unexpected labor challenges. By incorporating this contingency, you can enhance the overall stability and success of your building project.</td>
-
-            </tr>
-            <tr>
-                <td align="center"><strong>Total Contingency Cost: ₱ ${formatNumberWithCommas(contingencyBudget.toFixed(2))}</td></strong>
-            </tr>
-        </table>
-        <br><br>
-        <table border="1">
-            <tr>
-                <td colspan="2" align="center"><Strong>Equipment (3%)</td></Strong>
-            </tr>
-            <tr>
-                <td align="center">Note: Allocating 3% of your budget for equipment is crucial to ensure sufficient funds for purchasing or renting construction equipment like excavators, backhoes, and bulldozers.</td>
-
-            </tr>
-            <tr>
-                <td align="center"><strong>Total Equipment Cost: ₱ ${formatNumberWithCommas(equipmentBudget.toFixed(2))}</td></strong>
-            </tr>
-        </table>
-        </table>
-        <br>
-        </table>
+                    <tr>
+                        <td align="left">Budget range for ${squareMeter} square meters</td>
+                        <td colspan="3" align="left">₱ ${formatNumberWithCommas(minBudget)} - ₱ ${formatNumberWithCommas(maxBudget)}</td>
+                    </tr>
+                    <tr>
+                        <td align="left">Estimated working days</td>
+                        <td>${workingDays} days (approximately ${estimatedMonths} months based on an average month of ${averageMonthLength} days)</td>
+                    </tr>
+                </table>
+            </div>
+    
+            <!-- Second Table: Budget Breakdown -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td colspan="3" align="center"><strong>Budget Breakdown</strong></td>
+                        </tr>
+                        <tr>
+                            <th>Breakdown</th>
+                            <th>Percentage</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center">Labor</td>
+                            <td align="center">45%</td>
+                            <td align="center">₱ ${formatNumberWithCommas(laborBudget.toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td align="center">Materials</td>
+                            <td align="center">45%</td>
+                            <td align="center">₱ ${formatNumberWithCommas(materialsBudget.toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td align="center">Contingency</td>
+                            <td align="center">7%</td>
+                            <td align="center">₱ ${formatNumberWithCommas(contingencyBudget.toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td align="center">Equipment</td>
+                            <td align="center">3%</td>
+                            <td align="center">₱ ${formatNumberWithCommas(equipmentBudget.toFixed(2))}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- Third Table: Labor Breakdown -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td colspan="4" align="center"><strong>Labor (45%)</strong></td>
+                        </tr>
+                        <tr>
+                            <th align="center">Workers</th>
+                            <th align="center">No. of workers</th>
+                            <th align="center">Salary per day</th>
+                            <th align="center">Total Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center">Foreman</td>
+                            <td align="center">${workers.foreman}</td>
+                            <td align="center">₱ ${wageRates.foreman}</td>
+                            <td align="center">₱ ${formatNumberWithCommas((workers.foreman * wageRates.foreman).toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td align="center">Carpenter</td>
+                            <td align="center">${workers.carpenter}</td>
+                            <td align="center">₱ ${wageRates.carpenter}</td>
+                            <td align="center">₱ ${formatNumberWithCommas((workers.carpenter * wageRates.carpenter).toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td align="center">Mason</td>
+                            <td align="center">${workers.mason}</td>
+                            <td align="center">₱ ${wageRates.mason}</td>
+                            <td align="center">₱ ${formatNumberWithCommas((workers.mason * wageRates.mason).toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td align="center">Welder</td>
+                            <td align="center">${workers.welder}</td>
+                            <td align="center">₱ ${wageRates.welder}</td>
+                            <td align="center">₱ ${formatNumberWithCommas((workers.welder * wageRates.welder).toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td align="center">Painter</td>
+                            <td align="center">${workers.painter}</td>
+                            <td align="center">₱ ${wageRates.painter}</td>
+                            <td align="center">₱ ${formatNumberWithCommas((workers.painter * wageRates.painter).toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td align="center">Electrician</td>
+                            <td align="center">${workers.electrician}</td>
+                            <td align="center">₱ ${wageRates.electrician}</td>
+                            <td align="center">₱ ${formatNumberWithCommas((workers.electrician * wageRates.electrician).toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td align="center">Helper</td>
+                            <td align="center">${workers.helper}</td>
+                            <td align="center">₱ ${wageRates.helper}</td>
+                            <td align="center">₱ ${formatNumberWithCommas((workers.helper * wageRates.helper).toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right"><strong>Total Daily Labor</strong></td>
+                            <td align="center">₱ ${formatNumberWithCommas(dailyLaborCost.toFixed(2))}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right"><strong>Total Labor Cost</strong></td>
+                            <td align="center">₱ ${formatNumberWithCommas(laborBudget.toFixed(2))}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- Fourth Table: Materials Breakdown -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td colspan="3" align="center"><strong>Materials (45%)</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td align="center">Cement</td></tr>
+                        <tr><td align="center">Rebars</td></tr>
+                        <tr><td align="center">Hollow blocks</td></tr>
+                        <tr><td align="center">Tiles and Adhesive</td></tr>
+                        <tr><td align="center">Roping Materials Including C-Purlins</td></tr>
+                        <tr><td align="center">Angle bars for traces</td></tr>
+                        <tr><td align="center">Painting materials</td></tr>
+                        <tr><td align="center">Electrical Materials</td></tr>
+                        <tr><td align="center">Plywood & Lambers (nails, doorjambs, etc.)</td></tr>
+                        <tr><td align="center">Panel doors</td></tr>
+                        <tr>
+                            <td align="center"><strong>Total Material Cost: ₱ ${formatNumberWithCommas(materialsBudget.toFixed(2))}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- Fifth Table: Contingency Breakdown -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td colspan="2" align="center"><strong>Contingency (7%)</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center">Note: It is strongly recommended that a contingency fund of 7% of the total project budget be allocated for the construction of your new home. This reserve will serve as a financial safety net to mitigate the potential impact of unforeseen circumstances, such as fluctuations in material costs or unexpected labor challenges.</td>
+                        </tr>
+                        <tr>
+                            <td align="center"><strong>Total Contingency Cost: ₱ ${formatNumberWithCommas(contingencyBudget.toFixed(2))}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- Sixth Table: Equipment Breakdown -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td colspan="2" align="center"><strong>Equipment (3%)</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center">Note: Equipment costs typically cover the rental of construction machinery, tools, scaffolding, and other specialized equipment required for the project.</td>
+                        </tr>
+                        <tr>
+                            <td align="center"><strong>Total Equipment Cost: ₱ ${formatNumberWithCommas(equipmentBudget.toFixed(2))}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     `);
+    
     myModal.show();
 
 }
