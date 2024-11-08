@@ -300,3 +300,130 @@ body {
     }
 
 }
+
+@media(min-width: 0px) and (max-width: 359px) {
+    .home .banner h1 {
+        font-size: 30px !important;   
+    }
+
+    .home .banner p {
+        
+        width: 100%;
+    }
+
+    .home .banner .btn-start {
+        width: 100% !important;
+    }
+}
+
+@media(min-width: 360px) and (max-width: 565px) {
+    .home .banner h1 {
+        font-size: 40px !important;   
+    }
+
+    .home .banner p {
+        
+        width: 100%;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 1203px) {
+
+    .about-us .banner {
+        width: 90% !important;
+    }
+
+    .swiper .swiper-slide:nth-child(1) .card-header {
+        background-image: url('../../public/img/bubbly.jpg');
+        background-position-y: 0 !important;
+    }
+    
+    .swiper .swiper-slide:nth-child(2) .card-header {
+        background-image: url('../../public/img/sadness.jpg');
+        background-position-y: 0 !important;
+    }
+    
+    .swiper .swiper-slide:nth-child(3) .card-header {
+        background-image: url('../../public/img/love.jpg');
+        background-position-y: -30px !important;
+    }
+    
+    .swiper .swiper-slide:nth-child(4) .card-header {
+        background-image: url('../../public/img/gwenny.jpg');
+        background-position-y: 0 !important;
+    }
+    
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .card {
+            width: 100%;
+            min-height: 800px !important;
+            background-color: transparent !important;
+            .card-header {
+                height: 150px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: #282828;
+                    opacity: 0.6;
+                    z-index: 8;
+                }
+
+
+                .profile {
+                    display: block !important;
+
+                    .avatar {
+                        position: relative;
+                        img {
+                            width: 120px !important;
+                            height: 120px !important;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                    }
+
+                   .content {
+                        text-align: center !important;
+                        top: 25px !important;
+                   }
+                }
+            }
+
+            .card-body {
+
+                p {
+                    position: relative;
+                    top: 200px !important;
+                    font-size: 14px;
+                    text-align: center !important;
+                    text-indent: 20px;
+                }
+
+                p::before {
+                    content: "\f10d"; 
+                    font-family: "Font Awesome 6 Free";
+                    font-weight: 900; 
+                    position: absolute;
+                    top: -35px;
+                    left: 0;
+                    font-size: 20px;
+                }
+
+            }
+        }
+    }
+}

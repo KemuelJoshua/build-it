@@ -1,6 +1,7 @@
 import './bootstrap';
 
 $(function() {
+  
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: 3,
         spaceBetween: 30,
@@ -8,7 +9,25 @@ $(function() {
           el: ".swiper-pagination",
           clickable: true,
         },
+        breakpoints: {
+          // When the viewport is 640px or smaller
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          // When the viewport is 768px or larger
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          // When the viewport is 1024px or larger
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
       });
+      
 
     $(window).scroll(function() {
         if ($(this).scrollTop() > 100) {
