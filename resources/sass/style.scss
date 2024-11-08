@@ -1,0 +1,302 @@
+* {
+    font-family: 'Poppins';
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.navbar {
+    background-color: transparent !important;
+    width: 100%;
+    transition: all ease 0.3s;
+    position: fixed;
+    top: 0;
+    z-index: 99 !important;
+    padding: 15px 0;
+
+    .navbar-brand {
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .nav-link {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .nav-link.active {
+        color: #fff !important;
+        border-bottom: 3px solid $primary;
+    }
+}
+
+.navbar.active {
+    position: fixed;
+    color: #000 !important;
+    background-color: #fff !important;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+
+    .navbar-brand, .nav-link, .nav-link.active {
+        color: #000 !important;
+    }
+}
+
+.home {
+    background-image: url('../../public/img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: start;
+    width: 100%;
+    min-height: 800px;
+    object-fit: scale-down;
+    display: flex;
+    align-items: center;
+    padding: 20px 0 20px 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #282828;
+        opacity: 0.3;
+    }
+}
+
+.home .banner {
+    position: relative;
+    z-index: 8;
+    
+    h1 {
+        font-size: 60px;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #fff;
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: 600;
+        width: 600px;
+    }
+
+    .btn-start {
+        margin-top: 30px;
+        width: 300px;
+        height: 60px;
+        padding: 35px 0;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 600;
+        display: flex;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background-color: $primary;
+        border: 1px solid $primary;
+        text-decoration: none;
+    }
+
+}
+
+.features {
+    border-top-right-radius: 80px;
+    border-top-left-radius: 80px;
+    background-color: #fff;
+    position: relative;
+    top: -50px;
+
+    .row {
+        position: relative;
+        top: -60px;
+    }
+
+    .card {
+        border-radius: 20px;
+        min-height: 350px;
+        .icon img {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto !important;
+            font-size: 20px;
+        }
+
+        .description {
+            margin-top: 30px;
+            text-align: center;
+
+            h5 {
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            p {
+                font-weight: 500;
+            }
+
+        }
+
+    }
+
+}
+
+.about-us {
+    .banner {
+        width: 70%;
+        margin: auto;
+        h2 {
+            text-transform: uppercase;
+            border-left: 5px solid $primary;
+            padding-left: 10px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 16px;
+            text-align: justify;
+        }
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+        cursor: grab;
+    } 
+
+    .swiper .swiper-slide:nth-child(1) .card-header {
+        background-image: url('../../public/img/bubbly.jpg');
+        background-position-y: -80px;
+    }
+    
+    .swiper .swiper-slide:nth-child(2) .card-header {
+        background-image: url('../../public/img/sadness.jpg');
+        background-position-y: -150px;
+    }
+    
+    .swiper .swiper-slide:nth-child(3) .card-header {
+        background-image: url('../../public/img/love.jpg');
+        background-position-y: -200px;
+    }
+    
+    .swiper .swiper-slide:nth-child(4) .card-header {
+        background-image: url('../../public/img/gwenny.jpg');
+        background-position-y: -120px;
+    }
+    
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .card {
+            width: 100%;
+            min-height: 600px;
+            background-color: transparent !important;
+            .card-header {
+                height: 250px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: #282828;
+                    opacity: 0.6;
+                    z-index: 8;
+                }
+
+
+                .profile {
+                    position: relative;
+                    top: 180px;
+                    display: flex;
+                    align-items: start;
+                    gap: 10px;
+                    z-index: 9;
+
+                    .avatar {
+                        position: relative;
+                        img {
+                            width: 150px;
+                            height: 150px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                    }
+
+                   .content {
+                        color: #000;
+                        text-align: left;
+                        position: relative;
+                        top: 75px;
+                        h3 {
+                            font-weight: 600;
+                            line-height: 24px;
+                            margin-bottom: 0;
+                        }
+
+                        small {
+                            font-weight: 600;
+                            font-size: 12px;
+                            line-height: 13px;
+                        }
+                   }
+                }
+            }
+
+            .card-body {
+
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+
+                p {
+                    position: relative;
+                    top: 130px;
+                    font-size: 14px;
+                    text-align: justify;
+                    text-indent: 20px;
+                }
+
+                p::before {
+                    content: "\f10d"; 
+                    font-family: "Font Awesome 6 Free";
+                    font-weight: 900; 
+                    position: absolute;
+                    top: -35px;
+                    left: 0;
+                    font-size: 20px;
+                }
+
+            }
+        }
+
+    }
+}
+
+.footer {
+    color: #fff;
+    background-color: $primary;
+
+    h1 {
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+}

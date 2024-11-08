@@ -9,16 +9,16 @@
                     <div class="banner">
                         <h1>Construction and Cost Estimator</h1>
                         <p>Get a detailed cost breakdown tailored to your budget and let us simplify your construction planning!</p>
-                        <button class="btn-start">Estimate Now <i class="fa-solid fa-arrow-right-long"></i></button>
+                        <a target="_blank" href="{{route('estimate')}}" class="btn-start">Estimate Now <i class="fa-solid fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="features">
+    <div class="features py-5">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-12 col-md-10">
+                <div class="col-12 col-md-12 col-xl-10">
                     <div class="row d-flex justify-content-center">
                         <div class="col-12 col-md-4 mb-4">
                             <div class="card shadow">
@@ -90,11 +90,47 @@
             </div>
         </div>
     </div>
+
+    <div class="estimate py-5">
+        <div class="container">
+            <div class="text-center text-uppercase pb-3">
+                <h2 class="fw-bold">Construction Cost Estimation</h2>
+            </div>
+            <div class="row d-flex justify-content-center mt-3">
+                <div class="col-12 col-md-7">
+                    <div class="card shadow round-lg">
+                        <div class="card-body p-5">
+                           <form id="submit-estimate">
+                                @csrf
+                                @method('POST')
+                                <div class="mb-4">
+                                    <label style="font-size: 12px" class="text-uppercase fw-bold mb-2" for="square">Enter Square Meter: </label>
+                                    <input type="text" name="square_meter" id="square_meter" class="form-control py-2" placeholder="Enter square meter">
+                                    @error('square_meter')
+                                        <small class="text-danger mb-0 text-uppercase fw-bold" style="font-size: 11px;">{{$message}}</small>
+                                    @enderror
+                                </div>
+                                <div class="mb-4">
+                                    <label style="font-size: 12px" class="text-uppercase fw-bold mb-2" for="budget">Enter Budget (in Peso):</label>
+                                    <input type="text" name="budget" id="budget" class="form-control py-2" placeholder="Enter budget">
+                                    @error('budget')
+                                        <small class="text-danger mb-0 text-uppercase fw-bold" style="font-size: 11px;">{{$message}}</small>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="btn btn-primary px-4 py-3 text-uppercase fw-bold float-end">Estimate Project Cost</button>
+                           </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="about-us py-5">
         <div class="container">
             <div class="banner">
                 <h2>About Us</h2>
-                <h1>Meet the team</h1>
+                <h1 class="mt-3">Meet the team</h1>
                 <p>
                     buildIT is a practical and reliable tool for estimating construction costs and material requirements. Designed to assist both homeowners and contractors, it helps users quickly calculate material quantities, labor costs, and total project expenses based on specific project details and requirements. With its straightforward and user-friendly interface, buildIT allows users to customize inputs such as project size, material types, and labor rates, making budgeting easier and more precise. Whether planning a small renovation or a large construction project, buildIT provides the insights needed to manage costs effectively and keep projects within budget.
                 </p>
@@ -102,7 +138,7 @@
             <div class="swiper mySwiper mt-5">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="card shadow">
+                        <div class="card">
                             <div class="card-header">
                                 <div class="profile">
                                     <div class="avatar">
@@ -122,7 +158,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="card shadow">
+                        <div class="card">
                             <div class="card-header">
                                 <div class="profile">
                                     <div class="avatar">
@@ -142,7 +178,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="card shadow">
+                        <div class="card">
                             <div class="card-header">
                                 <div class="profile">
                                     <div class="avatar">
@@ -162,7 +198,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="card shadow">
+                        <div class="card">
                             <div class="card-header">
                                 <div class="profile">
                                     <div class="avatar">
@@ -186,13 +222,17 @@
             </div>
         </div>
     </div>
+
     <div class="footer py-5 mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-12 cool-md-6">
-                    <div class="text-center">
+                <div class="col-12 col-md-6">
+                    <div class="text-start">
                         <h1>Contact Us</h1>
                         <p>Our friendly customer support team is ready to assist you with any questions.</p>
+                    </div>
+                    <div class="my-3">
+                        <hr>
                     </div>
                     <div class="ul list-unstyled">
                         <li class="list-unstyled-item">
@@ -209,7 +249,39 @@
                         </li>
                     </div>
                 </div>
+                <div class="col-12 col-md-6">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="contact">
+                        <div class="group mb-3">
+                            <input type="text" name="name" placeholder="Your Name" class="form-control py-3" required>
+                        </div>
+                        <div class="group mb-3">
+                            <input type="email" name="email" placeholder="Your Email" class="form-control py-3" required>
+                        </div>
+                        <div class="group mb-3">
+                            <textarea name="message" rows="5" placeholder="Your Message" class="form-control py-3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary float-end px-5 py-3 text-white text-uppercase fw-bold">Submit</button>
+                    </form>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="estimationModal" tabindex="-1" aria-labelledby="estimationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="estimationModalLabel">Construction Cost Estimation</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
         </div>
     </div>
 
