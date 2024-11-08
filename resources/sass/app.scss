@@ -6,3 +6,258 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins';
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.navbar {
+    position: fixed;
+    background-color: transparent;
+    width: 100%;
+    margin-top: 20px;
+
+    .navbar-brand {
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+}
+
+.home {
+    background-image: url('../../public/img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: start;
+    width: 100%;
+    min-height: 800px;
+    object-fit: scale-down;
+    display: flex;
+    align-items: center;
+    padding: 20px 0 20px 0;
+}
+
+.home .banner {
+    h1 {
+        font-size: 60px;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #fff;
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: 600;
+        width: 600px;
+    }
+
+    button {
+        margin-top: 30px;
+        width: 300px;
+        height: 60px;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 600;
+        display: flex;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+.features {
+    border-top-right-radius: 80px;
+    border-top-left-radius: 80px;
+    background-color: #fff;
+    position: relative;
+    top: -30px;
+
+    .row {
+        position: relative;
+        top: -30px;
+    }
+
+    .card {
+        border-radius: 20px;
+        min-height: 350px;
+        .icon img {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto !important;
+            font-size: 20px;
+        }
+
+        .description {
+            margin-top: 30px;
+            text-align: center;
+
+            h5 {
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            p {
+                font-weight: 500;
+            }
+
+        }
+
+    }
+
+}
+
+.about-us {
+    .banner {
+        width: 70%;
+        margin: auto;
+        h2 {
+            text-transform: uppercase;
+            border-left: 5px solid $primary;
+            padding-left: 10px;
+        }
+        p {
+            text-align: justify;
+        }
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+    } 
+
+    .swiper .swiper-slide:nth-child(1) .card-header {
+        background-image: url('../../public/img/bubbly.jpg');
+        background-position-y: -80px;
+    }
+    
+    .swiper .swiper-slide:nth-child(2) .card-header {
+        background-image: url('../../public/img/sadness.jpg');
+        background-position-y: -150px;
+    }
+    
+    .swiper .swiper-slide:nth-child(3) .card-header {
+        background-image: url('../../public/img/love.jpg');
+        background-position-y: -200px;
+    }
+    
+    .swiper .swiper-slide:nth-child(4) .card-header {
+        background-image: url('../../public/img/gwenny.jpg');
+        background-position-y: -120px;
+    }
+    
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .card {
+            min-height: 600px;
+            border-radius: 20px;
+            .card-header {
+                height: 250px;
+                background-repeat: no-repeat;
+                background-size: 100%;
+                border-top-right-radius: 20px;
+                border-top-left-radius: 20px;
+                position: relative;
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: #282828;
+                    opacity: 0.6;
+                    z-index: 8;
+                    border-top-right-radius: 20px;
+                    border-top-left-radius: 20px;
+                }
+
+
+                .profile {
+                    position: relative;
+                    top: 180px;
+                    display: flex;
+                    align-items: start;
+                    gap: 10px;
+                    z-index: 9;
+
+                    .avatar {
+                        position: relative;
+                        img {
+                            width: 150px;
+                            height: 150px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            border-top-left-radius: 20px;
+                            border-top-right-radius: 20px;
+                        }
+                    }
+
+                   .content {
+                        color: #000;
+                        text-align: left;
+                        position: relative;
+                        top: 75px;
+                        h3 {
+                            font-weight: 600;
+                            line-height: 24px;
+                            margin-bottom: 0;
+                        }
+
+                        small {
+                            font-weight: 600;
+                            font-size: 12px;
+                            line-height: 13px;
+                        }
+                   }
+                }
+            }
+
+            .card-body {
+
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+
+                p {
+                    position: relative;
+                    top: 130px;
+                    font-size: 14px;
+                    text-align: justify;
+                    text-indent: 20px;
+                }
+
+                p::before {
+                    content: "\f10d"; 
+                    font-family: "Font Awesome 6 Free";
+                    font-weight: 900; 
+                    position: absolute;
+                    top: -35px;
+                    left: 0;
+                    font-size: 20px;
+                }
+
+            }
+        }
+
+    }
+}
+
+.footer {
+    background-color: #282828;
+}
