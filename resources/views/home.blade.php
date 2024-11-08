@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-7">
-                    <div class="banner">
+                    <div class="banner" data-aos="fade-up">
                         <h1>Construction and Cost Estimator</h1>
                         <p>Get a detailed cost breakdown tailored to your budget and let us simplify your construction planning!</p>
                         <a target="_blank" href="{{route('estimate')}}" class="btn-start">Estimate Now <i class="fa-solid fa-arrow-right-long"></i></a>
@@ -20,7 +20,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-12 col-xl-10">
                     <div class="row d-flex justify-content-center">
-                        <div class="col-12 col-md-4 mb-4">
+                        <div class="col-12 col-md-4 mb-4" data-aos="fade-up">
                             <div class="card shadow">
                                 <div class="card-body pt-5 pb-3">
                                     <div class="icon">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 mb-4">
+                        <div class="col-12 col-md-4 mb-4" data-aos="fade-up">
                             <div class="card shadow">
                                 <div class="card-body pt-5 pb-3">
                                     <div class="icon">
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 mb-4">
+                        <div class="col-12 col-md-4 mb-4" data-aos="fade-up">
                             <div class="card shadow">
                                 <div class="card-body pt-5 pb-3">
                                     <div class="icon">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 mb-4">
+                        <div class="col-12 col-md-4 mb-4" data-aos="fade-up">
                             <div class="card shadow">
                                 <div class="card-body pt-5 pb-3">
                                     <div class="icon">
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 mb-4">
+                        <div class="col-12 col-md-4 mb-4" data-aos="fade-up">
                             <div class="card shadow">
                                 <div class="card-body pt-5 pb-3">
                                     <div class="icon">
@@ -96,7 +96,7 @@
             <div class="text-center text-uppercase pb-3">
                 <h2 class="fw-bold">Construction Cost Estimation</h2>
             </div>
-            <div class="row d-flex justify-content-center mt-3">
+            <div class="row d-flex justify-content-center mt-3" data-aos="fade-up">
                 <div class="col-12 col-md-7">
                     <div class="card shadow round-lg">
                         <div class="card-body p-5">
@@ -128,7 +128,7 @@
 
     <div class="about-us py-5">
         <div class="container">
-            <div class="banner">
+            <div class="banner" data-aos="fade-up">
                 <h2>About Us</h2>
                 <h1 class="mt-3">Meet the team</h1>
                 <p>
@@ -137,7 +137,7 @@
             </div>
             <div class="swiper mySwiper mt-5">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" data-aos="fade-up">
                         <div class="card">
                             <div class="card-header">
                                 <div class="profile">
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" data-aos="fade-up">
                         <div class="card">
                             <div class="card-header">
                                 <div class="profile">
@@ -177,7 +177,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" data-aos="fade-up">
                         <div class="card">
                             <div class="card-header">
                                 <div class="profile">
@@ -197,7 +197,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" data-aos="fade-up">
                         <div class="card">
                             <div class="card-header">
                                 <div class="profile">
@@ -227,14 +227,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <div class="text-start">
+                    <div class="text-start" data-aos="fade-up">
                         <h1>Contact Us</h1>
                         <p>Our friendly customer support team is ready to assist you with any questions.</p>
                     </div>
                     <div class="my-3">
                         <hr>
                     </div>
-                    <div class="ul list-unstyled">
+                    <div class="ul list-unstyled" data-aos="fade-up">
                         <li class="list-unstyled-item">
                             Pag-asa street, pasig, 1606, Metro Manila
                         </li>
@@ -249,7 +249,7 @@
                         </li>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6" data-aos="fade-up">
                     <form action="https://api.web3forms.com/submit" method="POST" class="contact">
                         <div class="group mb-3">
                             <input type="text" name="name" placeholder="Your Name" class="form-control py-3" required>
