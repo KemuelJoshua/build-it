@@ -5,17 +5,36 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ForecastController extends Controller
 {
 
-    public function predict()
+    public function predict(Request $request)
     {
         try {
             // Get the start date (5 years ago)
             $startDate = Carbon::now()->subYears(10);
-            $budget = 8000000;
-            $sqm = 250;
+
+            $validator = Validator::make($request->all(), [
+                'budget' => 'required|numeric|min:0',
+                'sqm' => 'required|numeric|min:50|max:300',
+            ]);
+        
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Validation failed.',
+                    'errors' => $validator->errors()
+                ], 400);
+            }
+
+            // Get validated data
+            $budget = $request->input('budget');
+            $sqm = $request->input('sqm');
+
+            // $budget = 600000;
+            // $sqm = 70;
             
             $lowerLimit = $budget - ($budget * 0.20); 
             $upperLimit = $budget + ($budget * 0.20);
@@ -25,7 +44,7 @@ class ForecastController extends Controller
 
             $data = DB::table('breakdowns')
                 ->where('created_at', '>=', $startDate)
-                ->whereBetween('budget', [$lowerLimit, $upperLimit])
+                // ->whereBetween('budget', [$lowerLimit, $upperLimit])
                 ->whereBetween('sqm', [$lowerLimiSqm, $upperLimiSqm])
                 ->selectRaw('YEAR(created_at) as year, AVG(sqm) as sqm') 
                 ->groupBy(DB::raw('YEAR(created_at)')) 
@@ -57,8 +76,16 @@ class ForecastController extends Controller
                 return round(floatval($value), 2);
             }, explode(',', $forecastString));
             
+            $currentYear = Carbon::now()->year;
+
+            $years = [];
+            for ($i = 1; $i <= 10; $i++) {
+                $years[] = $currentYear + $i;
+            }
+
             return response()->json([
                 'original_data' => $data,
+                'years' => $years,
                 'forecast' => $forecastArray,
             ]);
             
