@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class BreakdownFactory extends Factory
+class BreakDownFactory extends Factory
 {
     protected $model = BreakDown::class;
 
