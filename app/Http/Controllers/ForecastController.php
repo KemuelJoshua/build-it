@@ -62,7 +62,7 @@ class ForecastController extends Controller
             
             $arguments = implode(' ', $numbers);
             
-            $output = shell_exec('python "' . public_path('app/arima_forecast.py') . '" ' . $arguments . ' 2>&1');
+            $output = shell_exec('python3 "' . public_path('app/arima_forecast.py') . '" ' . $arguments . ' 2>&1');
             
             if ($output === null) {
                 return response()->json([
