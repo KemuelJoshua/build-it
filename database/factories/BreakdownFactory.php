@@ -20,7 +20,7 @@ class BreakDownFactory extends Factory
     public function definition()
     {
         // Generate a random square meter value within a reasonable range
-        $sqm = $this->faker->numberBetween(50, 300);
+        $sqm = $this->faker->numberBetween(0, 500);
 
         // Apply the logic for calculating the budget
         if ($sqm >= 50 && $sqm <= 99) {
