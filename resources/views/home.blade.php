@@ -117,7 +117,7 @@
                                         <small class="text-danger mb-0 text-uppercase fw-bold" style="font-size: 11px;">{{$message}}</small>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary px-4 py-3 text-uppercase fw-bold float-end">Estimate Project Cost</button>
+                                <button type="button" id="estimate-btn" class="btn btn-primary px-4 py-3 text-uppercase fw-bold float-end">Estimate Project Cost</button>
                            </form>
                         </div>
                     </div>
@@ -275,11 +275,14 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
+                <div class="container">
+                    <canvas id="myChart" width="400" height="200"></canvas>
+                    <div class="result" id="result">
+                </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary">Save Input</button>
             </div>
           </div>
         </div>
