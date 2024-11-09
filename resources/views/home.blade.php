@@ -5,7 +5,7 @@
     <div class="home">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-7">
+                <div class="col-12">
                     <div class="banner" data-aos="fade-up">
                         <h1>Construction and Cost Estimator</h1>
                         <p>Get a detailed cost breakdown tailored to your budget and let us simplify your construction planning!</p>
@@ -229,7 +229,7 @@
         </div>
     </div>
 
-    <div class="footer py-5 mt-5" id="contact">
+    <div class="footer py-5" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6">

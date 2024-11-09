@@ -46,7 +46,7 @@
                   @if(Auth::check())
                     <li class="nav-item mx-3">
                         <div class="dropdown">
-                            <button class="btn btn-primary px-4 py-2 text-uppercase fw-bold text-uppercase dropdown-toggle text-uppercase text-white fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-danger px-4 py-2 text-uppercase fw-bold text-uppercase dropdown-toggle text-uppercase text-white fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </button>
                             <ul class="dropdown-menu">
