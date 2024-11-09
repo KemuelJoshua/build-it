@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="banner" data-aos="fade-up">
-                        <h1>Construction and Cost Estimator</h1>
+                        <h1>Construction Cost Estimation</h1>
                         <p>Get a detailed cost breakdown tailored to your budget and let us simplify your construction planning!</p>
                         @if(Auth::check())
                             <a href="#estimation" class="btn-start">Estimate Now <i class="fa-solid fa-arrow-right-long"></i></a>
