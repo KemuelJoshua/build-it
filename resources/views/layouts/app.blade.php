@@ -40,6 +40,30 @@
                   <li class="nav-item mx-3">
                     <a class="nav-link" href="#contact">Contact</a>
                   </li>
+                  @if(Auth::check())
+                    <li class="nav-item mx-3">
+                        <div class="dropdown">
+                            <button class="btn btn-primary px-4 py-2 text-uppercase fw-bold text-uppercase dropdown-toggle text-uppercase text-white fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>                        
+                    </li>
+                  @else
+                    <li class="nav-item mx-3">
+                        <a class="btn btn-primary px-4 py-2 text-uppercase fw-bold" href="{{route('login')}}">Login</a>
+                    </li>
+                  @endif
                 </ul>
               </div>
             </div>
@@ -51,6 +75,7 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

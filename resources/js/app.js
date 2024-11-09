@@ -35,15 +35,6 @@ $(function() {
         }
     });
 
-
-    $('#submit-estimate').on('submit', function() {
-        const square_meter = $('#square_meter').val();
-        const budget = $('#budget').val();
-
-        estimate(square_meter, budget);
-
-    });
-
     $('#estimate-btn').on('click', function() {
         // Get the budget and sqm values (assuming they're from input fields with IDs 'budget' and 'sqm')
         var budget = $('#budget').val(); // Adjust the selector if needed
@@ -112,31 +103,11 @@ const myModal = new bootstrap.Modal('#estimationModal', {
     keyboard: false
 })
 
-function estimate(square_meter, budget) {
-    $.ajax({
-        url: '',
-        method: 'POST',
-        response: 'json',
-        data: {
-            'square_meter': square_meter,
-            'budget': budget
-        }, beforeSend() {
-            // disable button
-        }, success(response) {
-            console.log(response)
-        }   
-    }).done({
-        // enable button
-    });
-
-}
 
 function estimateCost() {
     const squareMeter = parseFloat($("#square_meter").val());
     const budget = parseFloat($("#budget").val());
     const resultElement = $("#result");
-
-    console.log('working');
 
     let minBudget, maxBudget;
     if (isNaN(squareMeter) || squareMeter < 50) {

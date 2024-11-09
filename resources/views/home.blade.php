@@ -9,13 +9,13 @@
                     <div class="banner" data-aos="fade-up">
                         <h1>Construction and Cost Estimator</h1>
                         <p>Get a detailed cost breakdown tailored to your budget and let us simplify your construction planning!</p>
-                        <a target="_blank" href="{{route('estimate')}}" class="btn-start">Estimate Now <i class="fa-solid fa-arrow-right-long"></i></a>
+                        <a href="#estimation" class="btn-start">Estimate Now <i class="fa-solid fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="features py-5">
+    <div class="features py-5" id="features">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-12 col-xl-10">
@@ -91,42 +91,44 @@
         </div>
     </div>
 
-    <div class="estimate py-5">
-        <div class="container">
-            <div class="text-center text-uppercase pb-3">
-                <h2 class="fw-bold">Construction Cost Estimation</h2>
-            </div>
-            <div class="row d-flex justify-content-center mt-3" data-aos="fade-up">
-                <div class="col-12 col-md-7">
-                    <div class="card shadow round-lg">
-                        <div class="card-body p-5">
-                           <form id="submit-estimate">
-                                @csrf
-                                @method('POST')
-                                <div class="mb-4">
-                                    <label style="font-size: 12px" class="text-uppercase fw-bold mb-2" for="square">Enter Square Meter: </label>
-                                    <input type="text" name="square_meter" id="square_meter" class="form-control py-2" placeholder="Enter square meter">
-                                    @error('square_meter')
-                                        <small class="text-danger mb-0 text-uppercase fw-bold" style="font-size: 11px;">{{$message}}</small>
-                                    @enderror
-                                </div>
-                                <div class="mb-4">
-                                    <label style="font-size: 12px" class="text-uppercase fw-bold mb-2" for="budget">Enter Budget (in Peso):</label>
-                                    <input type="text" name="budget" id="budget" class="form-control py-2" placeholder="Enter budget">
-                                    @error('budget')
-                                        <small class="text-danger mb-0 text-uppercase fw-bold" style="font-size: 11px;">{{$message}}</small>
-                                    @enderror
-                                </div>
-                                <button type="button" id="estimate-btn" class="btn btn-primary px-4 py-3 text-uppercase fw-bold float-end">Estimate Project Cost</button>
-                           </form>
+    @if(Auth::check())
+        <div class="estimate py-5" id="estimation">
+            <div class="container">
+                <div class="text-center text-uppercase pb-3">
+                    <h2 class="fw-bold">Construction Cost Estimation</h2>
+                </div>
+                <div class="row d-flex justify-content-center mt-3" data-aos="fade-up">
+                    <div class="col-12 col-md-7">
+                        <div class="card shadow round-lg">
+                            <div class="card-body p-5">
+                            <form id="submit-estimate">
+                                    @csrf
+                                    @method('POST')
+                                    <div class="mb-4">
+                                        <label style="font-size: 12px" class="text-uppercase fw-bold mb-2" for="square">Enter Square Meter: </label>
+                                        <input type="text" name="square_meter" id="square_meter" class="form-control py-2" placeholder="Enter square meter">
+                                        @error('square_meter')
+                                            <small class="text-danger mb-0 text-uppercase fw-bold" style="font-size: 11px;">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <label style="font-size: 12px" class="text-uppercase fw-bold mb-2" for="budget">Enter Budget (in Peso):</label>
+                                        <input type="text" name="budget" id="budget" class="form-control py-2" placeholder="Enter budget">
+                                        @error('budget')
+                                            <small class="text-danger mb-0 text-uppercase fw-bold" style="font-size: 11px;">{{$message}}</small>
+                                        @enderror
+                                    </div>
+                                    <button type="button" id="estimate-btn" class="btn btn-primary px-4 py-3 text-uppercase fw-bold float-end">Estimate Project Cost</button>
+                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 
-    <div class="about-us py-5">
+    <div class="about-us py-5" id="about">
         <div class="container">
             <div class="banner" data-aos="fade-up">
                 <h2>About Us</h2>
@@ -223,7 +225,7 @@
         </div>
     </div>
 
-    <div class="footer py-5 mt-5">
+    <div class="footer py-5 mt-5" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6">
@@ -239,7 +241,7 @@
                             Pag-asa street, pasig, 1606, Metro Manila
                         </li>
                         <li class="list-unstyled-item">
-                            Buildit.info
+                            <a href="https://build-it.services" class="nav-link">Build IT</a>
                         </li>
                         <li class="list-unstyled-item">
                             (123) 456-78990
@@ -250,15 +252,30 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6" data-aos="fade-up">
-                    <form action="https://api.web3forms.com/submit" method="POST" class="contact">
+                    <form action="{{route('sendMessage')}}" method="POST">
                         <div class="group mb-3">
                             <input type="text" name="name" placeholder="Your Name" class="form-control py-3" required>
+                            @error('name')
+                                <span class="text-danger text-uppercase mt-1" style="font-size: 11px" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="group mb-3">
                             <input type="email" name="email" placeholder="Your Email" class="form-control py-3" required>
+                            @error('email')
+                                <span class="text-danger text-uppercase mt-1" style="font-size: 11px" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="group mb-3">
                             <textarea name="message" rows="5" placeholder="Your Message" class="form-control py-3" required></textarea>
+                            @error('message')
+                                <span class="text-danger text-uppercase mt-1" style="font-size: 11px" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-secondary float-end px-5 py-3 text-white text-uppercase fw-bold">Submit</button>
                     </form>
