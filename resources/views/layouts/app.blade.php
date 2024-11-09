@@ -63,7 +63,7 @@
                     </li>
                   @else
                     <li class="nav-item mx-3">
-                        <a class="btn btn-primary px-4 py-2 text-uppercase fw-bold" href="{{route('login')}}">Login</a>
+                        <a class="btn btn-danger px-4 py-2 text-uppercase fw-bold" href="{{route('login')}}">Login</a>
                     </li>
                   @endif
                 </ul>
