@@ -36,11 +36,12 @@ $(function() {
     });
 
     $('#estimate-btn').on('click', function() {
-        // Get the budget and sqm values (assuming they're from input fields with IDs 'budget' and 'sqm')
-        var budget = $('#budget').val(); // Adjust the selector if needed
-        var sqm = $('#square_meter').val(); // Adjust the selector if needed
+        var budget = $('#budget').val(); 
+        var sqm = $('#square_meter').val(); 
     
-        // Send the data to the server using axios GET request with query parameters
+        var $button = $(this);
+        $button.prop('disabled', true).text('Loading...');
+
         axios.get('/forecast', {
             params: {
                 budget: budget,
@@ -53,12 +54,10 @@ $(function() {
     
             var ctx = document.getElementById('myChart').getContext('2d');
     
-            // Check if a chart already exists and destroy it if necessary
             if (window.myChart instanceof Chart) {
-                window.myChart.destroy();  // Destroy the existing chart before creating a new one
+                window.myChart.destroy();
             }
     
-            // Create a new chart
             window.myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -84,7 +83,6 @@ $(function() {
             estimateCost();
         })
         .catch(function (error) {
-            // Handle error and show SweetAlert with error details
             console.error('Error fetching data:', error);
     
             Swal.fire({
@@ -93,16 +91,66 @@ $(function() {
                 icon: 'error',
                 confirmButtonText: 'Ok'
             });
+        }).finally(function() {
+            $button.prop('disabled', false).text('Estimate Project Cost');
         });
     });
     
+    $('#contactForm').on('click', function (event) {
+        event.preventDefault();
+
+        var $form = $(this);
+        var $button = $form.find('button[type="submit"]');
+        $button.prop('disabled', true).text('Loading...');
+
+        $('.text-danger').text('').hide();
+
+        const formData = {
+            name: $('#name').val(),
+            email: $('#email').val(),
+            message: $('#message').val()
+        };
+
+        axios.post('/message', formData)
+            .then(function (response) {
+                $('#contactForm')[0].reset(); 
+                Swal.fire({
+                    title: 'Success!',
+                    text: response.data.message,
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                });
+            })
+            .catch(function (error) {
+                if (error.response && error.response.status === 422) {
+                    const errors = error.response.data.errors;
+                    if (errors.name) {
+                        $('#name-error').text(errors.name[0]).show();
+                    }
+                    if (errors.email) {
+                        $('#email-error').text(errors.email[0]).show();
+                    }
+                    if (errors.message) {
+                        $('#message-error').text(errors.message[0]).show();
+                    }
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: error.response ? error.response.data.message || 'An error occurred while fetching the data.' : 'Network or server error.',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    });
+                }
+            }).finally(function() {
+                $button.prop('disabled', false).text('Submit');
+            });
+    });
     
 });
 
 const myModal = new bootstrap.Modal('#estimationModal', {
     keyboard: false
 })
-
 
 function estimateCost() {
     const squareMeter = parseFloat($("#square_meter").val());
@@ -152,17 +200,17 @@ function estimateCost() {
     
     if (budget < minBudget) {
         Swal.fire({
-            title: 'Error!',
+            title: 'Info!',
             text: "Budget is not enough for this square meter. The minimum budget required is " + minBudget + ".",
-            icon: 'error',
+            icon: 'info',
             confirmButtonText: 'Ok!'
         });
         return;
     } else if (budget > maxBudget) {
         Swal.fire({
-            title: 'Error!',
+            title: 'Info!',
             text: "Your budget exceeds the maximum budget for this square meter range. The maximum budget is " + maxBudget + ".",
-            icon: 'error',
+            icon: 'info',
             confirmButtonText: 'Ok!'
         });
         return;
@@ -439,4 +487,3 @@ function estimateCost() {
 
 }
 
-      

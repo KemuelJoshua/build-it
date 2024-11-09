@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BreakDown;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+
+use function PHPUnit\Framework\returnSelf;
 
 class ForecastController extends Controller
 {
@@ -33,18 +36,11 @@ class ForecastController extends Controller
             $budget = $request->input('budget');
             $sqm = $request->input('sqm');
 
-            // $budget = 600000;
-            // $sqm = 70;
-            
-            $lowerLimit = $budget - ($budget * 0.20); 
-            $upperLimit = $budget + ($budget * 0.20);
-
-            $lowerLimiSqm = $sqm - ($sqm * 0.20);
-            $upperLimiSqm = $sqm + ($sqm * 0.20);
+            $lowerLimiSqm = $sqm - ($sqm * 0.30);
+            $upperLimiSqm = $sqm + ($sqm * 0.30);
 
             $data = DB::table('breakdowns')
                 ->where('created_at', '>=', $startDate)
-                // ->whereBetween('budget', [$lowerLimit, $upperLimit])
                 ->whereBetween('sqm', [$lowerLimiSqm, $upperLimiSqm])
                 ->selectRaw('YEAR(created_at) as year, AVG(sqm) as sqm') 
                 ->groupBy(DB::raw('YEAR(created_at)')) 
@@ -62,7 +58,7 @@ class ForecastController extends Controller
             
             $arguments = implode(' ', $numbers);
             
-            $output = shell_exec('python3 "' . public_path('app/arima_forecast.py') . '" ' . $arguments . ' 2>&1');
+            $output = shell_exec('python "' . public_path('app/arima_forecast.py') . '" ' . $arguments . ' 2>&1');
             
             if ($output === null) {
                 return response()->json([
@@ -83,8 +79,13 @@ class ForecastController extends Controller
                 $years[] = $currentYear + $i;
             }
 
+            $breakdown = BreakDown::create([
+                'sqm' => $sqm,
+                'budget' => $budget
+             ]);
+
             return response()->json([
-                'original_data' => $data,
+                'original_data' => $breakdown,
                 'years' => $years,
                 'forecast' => $forecastArray,
             ]);
@@ -96,5 +97,4 @@ class ForecastController extends Controller
             ], 500);
         }
     }
-    
 }

@@ -9,7 +9,11 @@
                     <div class="banner" data-aos="fade-up">
                         <h1>Construction and Cost Estimator</h1>
                         <p>Get a detailed cost breakdown tailored to your budget and let us simplify your construction planning!</p>
-                        <a href="#estimation" class="btn-start">Estimate Now <i class="fa-solid fa-arrow-right-long"></i></a>
+                        @if(Auth::check())
+                            <a href="#estimation" class="btn-start">Estimate Now <i class="fa-solid fa-arrow-right-long"></i></a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn-start">Estimate Now <i class="fa-solid fa-arrow-right-long"></i></a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -252,33 +256,21 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6" data-aos="fade-up">
-                    <form action="{{route('sendMessage')}}" method="POST">
+                    <form id="contactForm">
                         <div class="group mb-3">
-                            <input type="text" name="name" placeholder="Your Name" class="form-control py-3" required>
-                            @error('name')
-                                <span class="text-danger text-uppercase mt-1" style="font-size: 11px" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input type="text" name="name" id="name" placeholder="Your Name" class="form-control py-3">
+                            <span id="name-error" class="text-danger text-uppercase mt-1" style="font-size: 11px; display: none;"></span>
                         </div>
                         <div class="group mb-3">
-                            <input type="email" name="email" placeholder="Your Email" class="form-control py-3" required>
-                            @error('email')
-                                <span class="text-danger text-uppercase mt-1" style="font-size: 11px" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input type="email" name="email" id="email" placeholder="Your Email" class="form-control py-3">
+                            <span id="email-error" class="text-danger text-uppercase mt-1" style="font-size: 11px; display: none;"></span>
                         </div>
                         <div class="group mb-3">
-                            <textarea name="message" rows="5" placeholder="Your Message" class="form-control py-3" required></textarea>
-                            @error('message')
-                                <span class="text-danger text-uppercase mt-1" style="font-size: 11px" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <textarea name="message" id="message" rows="5" placeholder="Your Message" class="form-control py-3"></textarea>
+                            <span id="message-error" class="text-danger text-uppercase mt-1" style="font-size: 11px; display: none;"></span>
                         </div>
                         <button type="submit" class="btn btn-secondary float-end px-5 py-3 text-white text-uppercase fw-bold">Submit</button>
-                    </form>
+                    </form>                                       
                 </div>
             </div>
         </div>
@@ -296,10 +288,6 @@
                     <canvas id="myChart" width="400" height="200"></canvas>
                     <div class="result" id="result">
                 </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save Input</button>
             </div>
           </div>
         </div>

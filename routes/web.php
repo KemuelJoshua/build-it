@@ -25,7 +25,7 @@ Route::get('/estimate', [HomeController::class, 'estimate'])
     
 Route::get('/forecast', [ForecastController::class, 'predict']);
 
-Route::post('/message', [HomeController::class, 'message'])
+Route::post('/message', [HomeController::class, 'sendMessage'])
     ->name('sendMessage');
 
 Route::any('/logout', [LoginController::class, 'logout']);

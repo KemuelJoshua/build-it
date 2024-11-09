@@ -38,10 +38,7 @@ class HomeController extends Controller
 
         Mail::to('test.info@example.com')->send(new ContactMessage($validated));
 
-        return back()->with('success', 'Your message has been sent successfully!');
-
-        
-
+        return response()->json(['message' => 'Your message has been sent successfully!', 'status' => 'success'], 200);
     }
 
 }
