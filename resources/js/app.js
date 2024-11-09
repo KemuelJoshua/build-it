@@ -427,15 +427,16 @@ function estimateCost() {
                     </thead>
                     <tbody>
                         <tr><td align="center">Cement</td></tr>
-                        <tr><td align="center">Rebars</td></tr>
-                        <tr><td align="center">Hollow blocks</td></tr>
+                        <tr><td align="center">Rebar (Carbon, Stainless Steel, Galvanized, Glass Fiber)</td></tr>
+                        <tr><td align="center">Hollow blocks (Pillar, Lintel, Jamb, Stretcher, Bull Nose, Concrete)</td></tr>
                         <tr><td align="center">Tiles and Adhesive</td></tr>
-                        <tr><td align="center">Roping Materials Including C-Purlins</td></tr>
+                        <tr><td align="center">Roping Materials including C - Purlins</td></tr>
                         <tr><td align="center">Angle bars for traces</td></tr>
                         <tr><td align="center">Painting materials</td></tr>
                         <tr><td align="center">Electrical Materials</td></tr>
-                        <tr><td align="center">Plywood & Lambers (nails, doorjambs, etc.)</td></tr>
-                        <tr><td align="center">Panel doors</td></tr>
+                        <tr><td align="center">Plywood and Lumber</td></tr>
+                        <tr><td align="center">Nails, doorjambs, softwoods, fasteners</td></tr>
+                        <tr><td align="center">Panel doors (Oak, Walnut, Glazed, Shaker)</td></tr>
                         <tr>
                             <td align="center"><strong>Total Material Cost: ₱ ${formatNumberWithCommas(materialsBudget.toFixed(2))}</strong></td>
                         </tr>
